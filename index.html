@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Drop Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header" role="banner">
+    <div class="logo" tabindex="0">💧 Water Drop</div>
+    <nav class="header__actions" aria-label="Game actions">
+      <button class="header__btn" aria-label="Toggle sound" tabindex="0">🔊</button>
+      <button class="header__btn" aria-label="Help" tabindex="0">❓</button>
+    </nav>
+  </header>
+  <main class="main" role="main">
+    <section class="game-container" aria-label="Game area">
+      <div class="hud" role="status" aria-live="polite">
+        <span class="hud__item hud__score" aria-label="Score">Score: <span id="score">0</span></span>
+        <span class="hud__item hud__timer" aria-label="Timer or Health">Time: <span id="timer">00:00</span></span>
+        <span class="hud__item hud__streak" aria-label="Streak">Streak: <span id="streak">0</span></span>
+        <button class="hud__item hud__pause" id="pauseBtn" aria-label="Pause game">⏸️</button>
+      </div>
+      <div id="playfield" class="playfield" aria-label="Playfield" tabindex="0"></div>
+      <div id="feedbackLayer" class="feedback-layer" aria-live="assertive"></div>
+      <!-- Overlays -->
+      <div id="startOverlay" class="overlay" role="dialog" aria-modal="true">
+        <div class="overlay__content">
+          <h2>Start Game</h2>
+          <p>Catch the <span class="drop drop--good" aria-label="Good water drop"></span> good drops! Avoid <span class="drop drop--bad" aria-label="Pollutant drop"></span> pollutants.</p>
+          <button id="startBtn">Start</button>
+          <ul class="legend">
+            <li><span class="drop drop--good" aria-hidden="true"></span> Good Water</li>
+            <li><span class="drop drop--bad" aria-hidden="true"></span> Pollutant</li>
+          </ul>
+        </div>
+      </div>
+      <div id="pauseOverlay" class="overlay hidden" role="dialog" aria-modal="true">
+        <div class="overlay__content">
+          <h2>Paused</h2>
+          <button id="resumeBtn">Resume</button>
+        </div>
+      </div>
+      <div id="gameOverOverlay" class="overlay hidden" role="dialog" aria-modal="true">
+        <div class="overlay__content">
+          <h2>Game Over</h2>
+          <div class="summary" aria-label="Game summary">
+            <p>Score: <span id="finalScore">0</span></p>
+            <p>Streak: <span id="finalStreak">0</span></p>
+          </div>
+          <button id="replayBtn">Replay</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <span class="sr-only" id="ariaInstructions">Use arrow keys to move. Press space to pause.</span>
+</body>
+</html>
